@@ -1,0 +1,12 @@
+.matrix input {
+    width: 3em;
+}
+
+.result input {
+    background-color: lightyellow;
+}
+
+#tasks {
+    border-collapse: separate;
+    border-spacing: 5em;
+}
