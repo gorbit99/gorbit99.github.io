@@ -207,7 +207,7 @@ function rsCalc() {
     let k = n - 2 * errors;
 
     document.querySelector("#rsN").value = n;
-    document.querySelector("#rsK").value = n;
+    document.querySelector("#rsK").value = k;
 
     let matTable = document.querySelector("#rsGenMat");
     matTable.innerHTML = "";
