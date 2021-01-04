@@ -393,6 +393,46 @@ function revRSDecode() {
     }
 }
 
+function lz78encode() {
+    codeString = String(document.querySelector("#lz78Input").value);
+    
+    let out = document.querySelector("#lz78out");
+    out.innerHTML = "";
+    let szeletelt = "";
+    
+    String.prototype.paddingLeft = function (paddingValue) {
+        return String(paddingValue + this).slice(-paddingValue.length);
+    };
+
+    String.prototype.splice = function(start, delCount, newSubStr) {
+        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+    };
+
+    document.querySelector("#lz78out").innerHTML +="<pre>" + "Index".paddingLeft("      ") + "  "+ "Szelet".paddingLeft("       ")+ " (elöző,új)" + "</pre>"  + "<br>";
+
+    let dictionary = new Map(); 
+    let j = 0;
+    for(var i = 0; i< codeString.length ; i++) {
+        let tempString = "";
+        tempString += codeString.charAt(i);
+        let lastMatch = "";
+        while(dictionary.has(tempString)) {
+            lastMatch = tempString;
+            tempString += codeString.charAt(++i);
+        }
+        var a;
+        if(dictionary.has(lastMatch))
+            a = dictionary.get(lastMatch);
+        else a = -1;
+
+        document.querySelector("#lz78out").innerHTML +="<pre>" + (j+1).toString(2).paddingLeft(" 0000") + "  " + tempString.paddingLeft("      ")+ "     <" + (a + 1).toString(2).paddingLeft(" 0000")+ ", "+ codeString.charAt(i) +">" + "</pre><br>";
+        dictionary.set(tempString,j++);
+        szeletelt += tempString + " | ";
+    }
+    document.querySelector("#lz78out").innerHTML += szeletelt;
+    document.querySelector("#lz78Results").hidden = false;
+}
+
 function cyclicGenerate() {
     let modulo = +document.querySelector("#cyclicMod").value;
     let errors = +document.querySelector("#cyclicErrors").value;
@@ -410,21 +450,6 @@ function cyclicGenerate() {
 
     document.querySelector("#cyclicN").value = n;
     document.querySelector("#cyclicK").value = k;
-
-    // let inputRow = document.querySelector("#rsInput");
-    // let outputRow = document.querySelector("#rsOutput");
-    // inputRow.innerHTML = "";
-    // outputRow.innerHTML = "";
-
-    // for (let i = 0; i < k; i++) {
-    //     let cell = inputRow.insertCell(i);
-    //     cell.innerHTML = "<input></input>"
-    // }
-
-    // for (let i = 0; i < n; i++) {
-    //     let cell = outputRow.insertCell(i);
-    //     cell.innerHTML = "<input readonly></input>"
-    // }
     
     let genPolynom = document.querySelector("#cyclicGen");
 
