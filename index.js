@@ -349,7 +349,6 @@ function revRSDecode() {
     let rows = +document.querySelector("#revRSRows").value;
     let cols = +document.querySelector("#revRSCols").value;
 
-    let n = cols;
     let k = cols - rows;
 
     let mod = +document.querySelector("#revRSModulo").value;
@@ -359,8 +358,6 @@ function revRSDecode() {
     let lambda = +parMatTable.rows[0].cells[1].firstChild.value;
 
     let values = Array(k).fill(0);
-
-    let required = [];
 
     let requiredRow = document.querySelectorAll("#revRSCodevector input")
 
@@ -394,4 +391,128 @@ function revRSDecode() {
     for (let i = 0; i < k; i++) {
         resultRow.item(i).value = values[i];
     }
+}
+
+function cyclicGenerate() {
+    let modulo = +document.querySelector("#cyclicMod").value;
+    let errors = +document.querySelector("#cyclicErrors").value;
+    let primitive = +document.querySelector("#cyclicPrimitive").value;
+
+    let q = 0;
+    for (let i = 2; q < 2 * errors + 2; i++) {
+        if (isPrime(i)) {
+            q = i;
+        }
+    }
+
+    let n = q - 1;
+    let k = n - 2 * errors;
+
+    document.querySelector("#cyclicN").value = n;
+    document.querySelector("#cyclicK").value = k;
+
+    // let inputRow = document.querySelector("#rsInput");
+    // let outputRow = document.querySelector("#rsOutput");
+    // inputRow.innerHTML = "";
+    // outputRow.innerHTML = "";
+
+    // for (let i = 0; i < k; i++) {
+    //     let cell = inputRow.insertCell(i);
+    //     cell.innerHTML = "<input></input>"
+    // }
+
+    // for (let i = 0; i < n; i++) {
+    //     let cell = outputRow.insertCell(i);
+    //     cell.innerHTML = "<input readonly></input>"
+    // }
+    
+    let genPolynom = document.querySelector("#cyclicGen");
+
+    let values = Array(n - k + 1).fill(0);
+    let counter = Array(n - k).fill(0)
+    counter[0] = 1;
+    values[0] = 1;
+
+    while (counter.some((x) => x == 1)) {
+        let value = 1;
+        let c = 0;
+        for (let i = 0; i < n - k; i++) {
+            if (counter[i] == 1) {
+                value *= (-Math.pow(primitive, i + 1) % modulo + modulo) % modulo;
+                c++;
+            }
+        }
+        values[c] += value;
+
+        for (let i = 0; i < n - k; i++) {
+            if (counter[i] == 0) {
+                counter[i] = 1;
+                break;
+            }
+            counter[i] = 0;
+        }
+    }
+
+    genPolynom.value = "";
+    for (let i = 0; i < n - k + 1; i++) {
+        genPolynom.value += values[i] % modulo + "x^" + (n - k - i);
+        if (i != n - k) {
+            genPolynom.value += " + ";
+        }
+    }
+
+    let parPolynom = document.querySelector("#cyclicPar");
+
+    let codeShift = document.querySelector("#cyclicCodeShift");
+    codeShift.innerHTML = "";
+    for (let i = 0; i < n - k + 1; i++) {
+        codeShift.value += values[values.length - i - 1] % modulo;
+        if (i != n - k) {
+            codeShift.value += ",";
+        }
+    }
+
+    let message = document.querySelector("#cyclicMessage");
+    message.innerHTML = "";
+    for (let i = 0; i < n - k + 1; i++) {
+        message.value += ((i == 0 ? 1 : 0) - values[values.length - i - 1] % modulo + modulo) % modulo;
+        if (i != n - k) {
+            message.value += ",";
+        }
+    }
+
+    values = Array(k + 1).fill(0);
+    counter = Array(k).fill(0)
+    counter[0] = 1;
+    values[0] = 1;
+
+    while (counter.some((x) => x == 1)) {
+        let value = 1;
+        let c = 0;
+        for (let i = 0; i < k; i++) {
+            if (counter[i] == 1) {
+                value *= (-Math.pow(primitive, i + n - k + 1) % modulo + modulo) % modulo;
+                c++;
+            }
+        }
+        values[c] += value;
+
+        for (let i = 0; i < k; i++) {
+            if (counter[i] == 0) {
+                counter[i] = 1;
+                break;
+            }
+            counter[i] = 0;
+        }
+    }
+
+    parPolynom.value = "";
+    for (let i = 0; i < n - k + 1; i++) {
+        parPolynom.value += values[i] % modulo + "x^" + (n - k - i);
+        if (i != n - k) {
+            parPolynom.value += " + ";
+        }
+    }
+
+    document.querySelector("#cyclicResults").hidden = false;
 }
