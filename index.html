@@ -131,6 +131,39 @@
                     </div>
                 </td>
             </tr>
+            <tr> <!-- Ciklikus kódok -->
+                <td>
+                    <b>Ciklikus kódok</b>
+                </td>
+                <td>
+                    Adott egy ciklikus RS kód GF(<input id="cyclicMod" />) felett, ami minden <input id="cyclicErrors" /> hibát javít.
+                    A primitív <input id="cyclicPrimitive" />.<br>
+                    <button onclick="cyclicGenerate()">Generate!</button>
+
+                    <div id="cyclicResults" hidden>
+                        <br>
+                        <table class="matrix result" readonly>
+                            <tr>
+                                <td>n:</td>
+                                <td><input id="cyclicN" />
+                            </tr>
+                            <tr>
+                                <td>k:</td>
+                                <td><input id="cyclicK" />
+                            </tr>
+                        </table>
+                        <br>
+                        Generátor polinóm:<br>
+                        <input id="cyclicGen" readonly style="background-color:lightyellow" />
+                        Paritásellenörző polinóm:<br>
+                        <input id="cyclicPar" readonly style="background-color:lightyellow" />
+                        Kódpolinómot előállító shiftregiszter együtthatói:<br>
+                        <input id="cyclicCodeShift" readonly style="background-color:lightyellow" />
+                        Üzenetpolinómot előállító shiftregiszter együtthatói:<br>
+                        <input id="cyclicMessage" readonly style="background-color:lightyellow" />
+                    </div>
+                </td>
+            </tr>
         </table>
     </body>
 </html>
