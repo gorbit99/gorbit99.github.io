@@ -1,3 +1,146 @@
+function binlinCreate() {
+    let rows = +document.querySelector("#binlinRows").value;
+    let cols = +document.querySelector("#binlinCols").value;
+
+    let genMat = document.querySelector("#binlinGen");
+    genMat.innerHTML = "";
+
+    for (let r = 0; r < rows; r++) {
+        let tableRow = genMat.insertRow();
+        for (let c = 0; c < cols; c++) {
+            let tableCell = tableRow.insertCell();
+            tableCell.innerHTML = "<input></input>";
+        }
+    }
+
+    document.querySelector("#binlinGenDiv").hidden = false;
+}
+
+function binlinCalculate() {
+    let rows = +document.querySelector("#binlinRows").value;
+    let cols = +document.querySelector("#binlinCols").value;
+
+    let genMatRows = document.querySelectorAll("#binlinGen tr");
+
+    let genMat = [];
+
+    for (let row of genMatRows) {
+        let matRow = [];
+        for (let cell of row.cells) {
+            matRow.push(+cell.firstChild.value);
+        }
+        genMat.push(matRow);
+    }
+
+    document.querySelector("#binlinResultDiv").hidden = false;
+
+    let n = cols;
+    let k = rows;
+    document.querySelector("#binlinN").value = n;
+    document.querySelector("#binlinK").value = k;
+
+    let parMat = document.querySelector("#binlinParMat");
+    parMat.innerHTML = "";
+    for (let r = 0; r < n - k; r++) {
+        let tableRow = parMat.insertRow();
+        for (let c = 0; c < k; c++) {
+            let tableCell = tableRow.insertCell();
+            let value = genMat[c][n - k + r - 1];
+            tableCell.innerHTML = "<input readonly value='" + value + "' />"
+        }
+        for (let c = 0; c < n - k; c++) {
+            let tableCell = tableRow.insertCell();
+            let value = c == r ? '1' : '0';
+            tableCell.innerHTML = "<input readonly value='" + value + "' />"
+        }
+    }
+
+    let codewords = [];
+    codewords.push("0".repeat(n));
+    for (let i = 0; i < k; i++) {
+        let codeword = "";
+        for (let j = 0; j < n; j++) {
+            codeword += genMat[i][j];
+        }
+        codewords.push(codeword);
+    }
+
+    let codeword = "";
+    for (let i = 0; i < n; i++) {
+        let sum = 0;
+        for (let j = 0; j < k; j++) {
+            sum += +codewords[j + 1][i];
+        }
+        sum %= 2;
+        codeword += sum;
+    }
+    codewords.push(codeword);
+
+    let codewordTable = document.querySelector("#binlinCodewords");
+    codewordTable.innerHTML = "";
+
+    for (let cw of codewords) {
+        codewordTable.insertRow().insertCell().innerHTML = "<input readonly value='" + cw + "' />";
+    }
+
+    document.querySelector("#binlinErrorVecDiv").hidden = false;
+}
+
+function binlinCalcEV() {
+    let parMat = document.querySelector("#binlinParMat");
+    let errorVec = document.querySelector("#binlinErrorVec").value;
+    let codewords = document.querySelectorAll("#binlinCodewords input")
+    let k = +document.querySelector("#binlinRows").value;
+    let n = +document.querySelector("#binlinCols").value;
+
+    let syndromeVec = "";
+    for (let i = 0; i < parMat.rows.length; i++) {
+        let val = 0;
+        for (let j = 0; j < n; j++) {
+            val += +errorVec[j] * +parMat.rows[i].cells[j].firstChild.value;
+        }
+        val %= 2;
+        syndromeVec += val;
+    }
+    document.querySelector("#binlinSyndrome").value = syndromeVec;
+
+    document.querySelector("#binlinEVResultDiv").hidden = false;
+
+    let codewordAnalyzed = document.querySelector("#binlinCWAnalyzed");
+
+    let headerRow = codewordAnalyzed.insertRow(0);
+    headerRow.insertCell();
+    headerRow.insertCell().innerHTML = "<b>Lehet vezető</b>";
+    headerRow.insertCell().innerHTML = "<b>súly</b>";
+
+    for (let i = 0; i < codewords.length; i++) {
+        let newVec = "";
+        for (let j = 0; j < n; j++) {
+            newVec += (+errorVec[j] + +codewords[i].value[j]) % 2;
+        }
+
+        let headerRow = codewordAnalyzed.insertRow();
+        headerRow.insertCell().innerHTML = newVec;
+    }
+
+    let minWeight = n;
+    for (let i = 0; i < codewords.length; i++) {
+        let code = codewordAnalyzed.rows[i + 1].cells[0].innerHTML;
+        let weight = code.split('1').length - 1;
+        if (weight < minWeight) {
+            minWeight = weight;
+        }
+    }
+
+    for (let i = 0; i < codewords.length; i++) {
+        let code = codewordAnalyzed.rows[i + 1].cells[0].innerHTML;
+        let weight = code.split('1').length - 1;
+        let tableRow = codewordAnalyzed.rows[i + 1];
+        tableRow.insertCell().innerHTML = weight == minWeight ? 'igen' : ' ';
+        tableRow.insertCell().innerHTML = weight;
+    }
+}
+
 function systematicGen() {
     let count = +document.querySelector("#systematicCount").value;
     
@@ -416,7 +559,7 @@ function lz78encode() {
         let tempString = "";
         tempString += codeString.charAt(i);
         let lastMatch = "";
-        while(dictionary.has(tempString)) {
+        while(dictionary.has(tempString) && i < codeString.length) {
             lastMatch = tempString;
             tempString += codeString.charAt(++i);
         }
@@ -438,14 +581,7 @@ function cyclicGenerate() {
     let errors = +document.querySelector("#cyclicErrors").value;
     let primitive = +document.querySelector("#cyclicPrimitive").value;
 
-    let q = 0;
-    for (let i = 2; q < 2 * errors + 2; i++) {
-        if (isPrime(i)) {
-            q = i;
-        }
-    }
-
-    let n = q - 1;
+    let n = modulo - 1;
     let k = n - 2 * errors;
 
     document.querySelector("#cyclicN").value = n;

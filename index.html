@@ -5,6 +5,57 @@
     </head>
     <body>
         <table id="tasks">
+            <tr> <!-- Bináris Lineáris kódok -->
+                <td>
+                    <b>Bináris Lineáris kódok</b>
+                </td>
+                <td>
+                    Adott egy generátormátrix:
+                    (<input id="binlinRows" /> sor x <input id="binlinCols" /> oszlop)<br>
+                    <button onclick="binlinCreate()">Generate!</button>
+                    <div id="binlinGenDiv" hidden>
+                        <br>
+                        <table class="matrix" id="binlinGen"></table>
+                        <button onclick="binlinCalculate()">Calculate!</button>
+                    </div>
+                    <div id="binlinResultDiv" hidden>
+                        <br>
+                        <table class="matrix result">
+                            <tr>
+                                <td>n:</td>
+                                <td><input id="binlinN" readonly /></td>
+                            </tr>
+                            <tr>
+                                <td>k:</td>
+                                <td><input id="binlinK" readonly /></td>
+                            </tr>
+                        </table>
+                        <br>
+                        Paritásellenörző mátrix:
+                        <table class="matrix result" id="binlinParMat"></table>
+                        <br>
+                        Kódszavak:
+                        <table class="result" id="binlinCodewords"></table>
+                    </div>
+                    <div id="binlinErrorVecDiv" hidden>
+                        <br>
+                        A hibavektor:<br>
+                        <input id="binlinErrorVec" /><br>
+                        <button onclick="binlinCalcEV()">Calculate!</button>
+                    </div>
+                    <div id="binlinEVResultDiv" hidden>
+                        <br>
+                        A szindrómavektor:<br>
+                        <input id="binlinSyndrome" readonly style="background-color: lightyellow" />
+                        <br>
+                        Hibavektorok a csoportban:
+                        <table class="result" id="binlinErrorGroup"></table>
+                        <br>
+                        Hibavektorok ebben a csoportban:
+                        <table id="binlinCWAnalyzed" class="matrix result" border="1px"></table>
+                    </div>
+                </td>
+            </tr>
             <tr> <!-- Szisztematikus kód -->
                 <td>
                     <b>Szisztematikus kód</b>
@@ -31,7 +82,7 @@
                         <br>
                         Akkor ez a <input readonly style="background-color:lightyellow" id="systematicSV"/> szindrómavektor.<br>
                         <br>
-                        Kódszavak ebben a csoportban:
+                        Hibavektorok ebben a csoportban:
                         <table id="systematicCWAnalyzed" class="matrix result" border="1px"></table>
                     </div>
                 </td>
