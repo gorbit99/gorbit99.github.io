@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manga Analyzer</title>
+  <script src="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/build/kuromoji.js"></script>
+  <script type="module" crossorigin src="/assets/index.56e0b153.js"></script>
+  <link rel="modulepreload" href="/assets/vendor.0bc0745c.js">
+  <link rel="stylesheet" href="/assets/index.4ac3c0a7.css">
+</head>
+
+<body>
+  
+
+  <main>
+    <div class="upload__container">
+      <div class="upload__title-container">
+        <h2 class="upload__title">Upload Mokuro Files</h2>
+        <div class="upload__info">
+          <i class="fas fa-question-circle"> </i>
+          <div class="upload__info-message">
+            Mokuro outputs it's json files into a directory called "_ocr". In
+            there, each manga gets a directory with the name of the manga.
+            Select every json file within that directory when uploading.
+          </div>
+        </div>
+      </div>
+      <div class="upload__drop-zone">
+        <span class="upload__drop-zone-text">
+          <i class="fas fa-arrow-up-from-bracket"></i>
+          Click or drag file to this area to upload.
+        </span>
+      </div>
+      <input type="file" multiple class="upload__file-input" accept="application/json" />
+      <button class="upload__button upload__button--inactive" disabled>
+        Analyze
+      </button>
+    </div>
+
+    <div class="loading loading--hidden">
+      <div class="loading__indicator">
+        <div class="loading__indicator-spinner"></div>
+      </div>
+      <div class="loading__text">Test text</div>
+    </div>
+
+    <div class="results results--hidden">
+      <template id="diagramTemplate">
+        <template id="diagramColumnTemplate">
+          <div class="results__diagram-column">
+            <div class="results__diagram-column-value">11</div>
+          </div>
+        </template>
+        <template id="diagramColumnWithHorizontalTemplate">
+          <div class="results__diagram-column">
+            <div class="results__diagram-column-value">41</div>
+            <span class="results__diagram-horizontal-value">4</span>
+          </div>
+        </template>
+        <template id="diagramHorizontalLineTemplate">
+          <div class="results__diagram-horizontal-line">
+            <span class="results__diagram-horizontal-line-text">4</span>
+          </div>
+        </template>
+        <template id="diagramAverageLineTemplate">
+          <div class="results__diagram-average">
+            <span class="results__diagram-average-text">130</span>
+          </div>
+        </template>
+        <template id="diagramValueLineTemplate">
+          <div class="results__diagram-value">
+            <span class="results__diagram-value-text">123</span>
+          </div>
+        </template>
+        <div class="results__diagram">
+          <div class="results__diagram-data"></div>
+        </div>
+      </template>
+      <div class="results__pages results__group">
+        <div class="results__info-group" data-result-name="pages">
+          <span class="results__info-name">Pages</span>
+          <span class="results__info-value">123</span>
+          <span class="results__info-average">130</span>
+          <span class="results__info-deviation">1.23</span>
+        </div>
+        <div class="results__info-group" data-result-name="meaningfulPages">
+          <span class="results__info-name">Meaningful Pages</span>
+          <span class="results__info-value">123</span>
+          <span class="results__info-average">130</span>
+          <span class="results__info-deviation">1.23</span>
+        </div>
+      </div>
+      <div class="results__bubbles results__group">
+        <div class="results__info-group" data-result-name="bubbles">
+          <span class="results__info-name">Speech bubbles</span>
+          <span class="results__info-value">123</span>
+          <span class="results__info-average">130</span>
+          <span class="results__info-deviation">1.23</span>
+        </div>
+        <div class="results__info-group" data-result-name="bubblesPerPage">
+          <span class="results__info-name">Per page</span>
+          <span class="results__info-value">123</span>
+          <span class="results__info-average">130</span>
+          <span class="results__info-deviation">1.23</span>
+        </div>
+      </div>
+      <div class="results__words results__group">
+        <div class="results__info-group" data-result-name="words">
+          <span class="results__info-name">Words</span>
+          <span class="results__info-value">123</span>
+          <span class="results__info-average">130</span>
+          <span class="results__info-deviation">1.23</span>
+        </div>
+        <div class="results__info-group" data-result-name="wordsPerPage">
+          <span class="results__info-name">Per page</span>
+          <span class="results__info-value">123</span>
+          <span class="results__info-average">130</span>
+          <span class="results__info-deviation">1.23</span>
+        </div>
+      </div>
+      <div class="results__characters results__group">
+        <div class="results__info-group" data-result-name="characters">
+          <span class="results__info-name">Characters</span>
+          <span class="results__info-value">123</span>
+          <span class="results__info-average">130</span>
+          <span class="results__info-deviation">1.23</span>
+        </div>
+        <div class="results__info-group" data-result-name="charactersPerPage">
+          <span class="results__info-name">Per page</span>
+          <span class="results__info-value">123</span>
+          <span class="results__info-average">130</span>
+          <span class="results__info-deviation">1.23</span>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="sidebar">
+    <div class="save__container save__container--hidden">
+      <label for="saveTitle"> Title </label>
+      <input class="save__title" id="saveTitle" />
+      <button class="save__button" disabled>Save</button>
+    </div>
+    <div class="saved-values__container">
+      <template id="savedValueTemplate">
+        <div class="saved-value__container">
+          <span class="saved-value__name" title=""></span>
+          <button class="saved-value__load-button">Load</button>
+        </div>
+      </template>
+    </div>
+  </div>
+</body>
+
+</html>
