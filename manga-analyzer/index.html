@@ -9,13 +9,13 @@
     <script
       type="module"
       crossorigin
-      src="/manga-analyzer/assets/index.453b66d9.js"
+      src="/manga-analyzer/assets/index.4761687f.js"
     ></script>
     <link
       rel="modulepreload"
       href="/manga-analyzer/assets/vendor.0bc0745c.js"
     />
-    <link rel="stylesheet" href="/manga-analyzer/assets/index.de76122a.css" />
+    <link rel="stylesheet" href="/manga-analyzer/assets/index.6aa98a5a.css" />
   </head>
 
   <body>
@@ -45,9 +45,7 @@
           class="upload__file-input"
           accept="application/json"
         />
-        <button class="upload__button upload__button--inactive" disabled>
-          Analyze
-        </button>
+        <button class="upload__button button" disabled>Analyze</button>
       </div>
 
       <div class="loading loading--hidden">
@@ -89,6 +87,18 @@
             <div class="results__diagram-data"></div>
           </div>
         </template>
+        <div
+          class="results__compare-column-title results__compare-column-title--current"
+        >
+          <h3 class="results__compare-column-title-text">Current</h3>
+          <h4 class="results__compare-column-title-subtext"></h4>
+        </div>
+        <div
+          class="results__compare-column-title results__compare-column-title--compare"
+        >
+          <h3 class="results__compare-column-title-text">Compare</h3>
+          <h4 class="results__compare-column-title-subtext"></h4>
+        </div>
         <div class="results__pages results__group">
           <div class="results__info-group" data-result-name="pages">
             <span class="results__info-name">Pages</span>
@@ -145,25 +155,151 @@
             <span class="results__info-deviation">1.23</span>
           </div>
         </div>
+
+        <div
+          class="results__compare-pages results__group results__group--compare"
+        >
+          <div class="results__info-group" data-result-name="pagesCompare">
+            <span class="results__info-name">Pages</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+          <div
+            class="results__info-group"
+            data-result-name="meaningfulPagesCompare"
+          >
+            <span class="results__info-name">Meaningful Pages</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+        </div>
+        <div
+          class="results__compare-bubbles results__group results__group--compare"
+        >
+          <div class="results__info-group" data-result-name="bubblesCompare">
+            <span class="results__info-name">Speech bubbles</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+          <div
+            class="results__info-group"
+            data-result-name="bubblesComparePerPage"
+          >
+            <span class="results__info-name">Per page</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+        </div>
+        <div
+          class="results__compare-words results__group results__group--compare"
+        >
+          <div class="results__info-group" data-result-name="wordsCompare">
+            <span class="results__info-name">Words</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+          <div
+            class="results__info-group"
+            data-result-name="wordsComparePerPage"
+          >
+            <span class="results__info-name">Per page</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+        </div>
+        <div
+          class="results__compare-characters results__group results__group--compare"
+        >
+          <div class="results__info-group" data-result-name="charactersCompare">
+            <span class="results__info-name">Characters</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+          <div
+            class="results__info-group"
+            data-result-name="charactersComparePerPage"
+          >
+            <span class="results__info-name">Per page</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+        </div>
       </div>
     </main>
     <div class="sidebar">
       <div class="save__container save__container--hidden">
         <label for="saveTitle"> Title </label>
         <input class="save__title" id="saveTitle" />
-        <button class="save__button" disabled>Save</button>
+        <button class="save__button button" disabled>Save</button>
       </div>
       <div class="saved-values__container">
         <template id="savedValueTemplate">
           <div class="saved-value__container">
             <span class="saved-value__name" title=""></span>
-            <button class="saved-value__load-button">Load</button>
+            <button
+              class="saved-value__compare-button saved-value__compare-button--hidden button button--square"
+              title="Compare"
+            >
+              <i class="fa fa-left-right"></i>
+            </button>
+            <button
+              class="saved-value__load-button button button--square"
+              title="Load"
+            >
+              <i class="fa fa-down-long"></i>
+            </button>
           </div>
         </template>
       </div>
-      <button class="saved-values__reload-button">
+      <button class="saved-values__reload-button button">
         Reload Preloaded Saves
       </button>
+    </div>
+    <div class="settings">
+      <div class="settings__icon">
+        <i class="fa fa-cog"></i>
+      </div>
+
+      <div class="settings__items">
+        <h3 class="settings__title">Settings</h3>
+        <div class="settings__group">
+          <label for="showAveragesFor">Show averages for</label>
+          <select id="showAveragesFor">
+            <option value="none">None</option>
+            <option value="abbc">ABBC</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      class="save__confirm-popup-container save__confirm-popup-container--hidden"
+    >
+      <div class="save__confirm-popup">
+        <h3 class="save__confirm-popup-title">Overwrite Save</h3>
+        <p class="save__confirm-popup-text">
+          A save with the same name already exists, do you want to overwrite it?
+        </p>
+        <div class="save__confirm-popup-buttons">
+          <button
+            class="save__confirm-popup-button save__confirm-popup-button--yes button button--danger"
+          >
+            Overwrite
+          </button>
+          <button
+            class="save__confirm-popup-button save__confirm-popup-button--no button button--secondary"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
