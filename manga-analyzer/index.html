@@ -6,16 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manga Analyzer</title>
     <script src="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/build/kuromoji.js"></script>
-    <script
-      type="module"
-      crossorigin
-      src="/manga-analyzer/assets/index.4761687f.js"
-    ></script>
-    <link
-      rel="modulepreload"
-      href="/manga-analyzer/assets/vendor.0bc0745c.js"
-    />
-    <link rel="stylesheet" href="/manga-analyzer/assets/index.6aa98a5a.css" />
+    <script type="module" crossorigin src="assets/index.29591dad.js"></script>
+    <link rel="modulepreload" href="assets/vendor.0bc0745c.js" />
+    <link rel="stylesheet" href="assets/index.d21c8b55.css" />
   </head>
 
   <body>
@@ -155,6 +148,23 @@
             <span class="results__info-deviation">1.23</span>
           </div>
         </div>
+        <div class="results__unique-words results__group">
+          <div class="results__info-group" data-result-name="uniqueWords">
+            <span class="results__info-name">Unique Words</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+          <div
+            class="results__info-group"
+            data-result-name="uniqueWordsPerPage"
+          >
+            <span class="results__info-name">Per page</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+        </div>
 
         <div
           class="results__compare-pages results__group results__group--compare"
@@ -232,36 +242,73 @@
             <span class="results__info-deviation">1.23</span>
           </div>
         </div>
+        <div
+          class="results__compare-unique-words results__group results__group--compare"
+        >
+          <div
+            class="results__info-group"
+            data-result-name="uniqueWordsCompare"
+          >
+            <span class="results__info-name">Unique Words</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+          <div
+            class="results__info-group"
+            data-result-name="uniqueWordsComparePerPage"
+          >
+            <span class="results__info-name">Per page</span>
+            <span class="results__info-value">123</span>
+            <span class="results__info-average">130</span>
+            <span class="results__info-deviation">1.23</span>
+          </div>
+        </div>
       </div>
     </main>
-    <div class="sidebar">
-      <div class="save__container save__container--hidden">
-        <label for="saveTitle"> Title </label>
-        <input class="save__title" id="saveTitle" />
-        <button class="save__button button" disabled>Save</button>
+    <div class="sidebar__container">
+      <span class="sidebar__toggle-icon">
+        <i class="fa fa-bars"></i>
+      </span>
+      <div class="sidebar">
+        <div class="save__container save__container--hidden">
+          <label for="saveTitle"> Title </label>
+          <input class="save__title" id="saveTitle" />
+          <button class="save__button button" disabled>Save</button>
+        </div>
+        <div class="saved-values__container">
+          <template id="savedValueTemplate">
+            <div class="saved-value__container">
+              <span class="saved-value__name" title=""></span>
+              <button
+                class="saved-value__compare-button saved-value__compare-button--hidden button button--square"
+                title="Compare"
+              >
+                <i class="fa fa-left-right"></i>
+              </button>
+              <button
+                class="saved-value__load-button button button--square"
+                title="Load"
+              >
+                <i class="fa fa-down-long"></i>
+              </button>
+            </div>
+          </template>
+        </div>
+        <button class="saved-values__reload-button button button--full-width">
+          Reload Preloaded Saves
+        </button>
+        <button
+          class="saved-values__download-json-button button button--full-width"
+        >
+          Download as JSON
+        </button>
+        <button
+          class="saved-values__load-json-button button button--full-width"
+        >
+          Load from JSON
+        </button>
       </div>
-      <div class="saved-values__container">
-        <template id="savedValueTemplate">
-          <div class="saved-value__container">
-            <span class="saved-value__name" title=""></span>
-            <button
-              class="saved-value__compare-button saved-value__compare-button--hidden button button--square"
-              title="Compare"
-            >
-              <i class="fa fa-left-right"></i>
-            </button>
-            <button
-              class="saved-value__load-button button button--square"
-              title="Load"
-            >
-              <i class="fa fa-down-long"></i>
-            </button>
-          </div>
-        </template>
-      </div>
-      <button class="saved-values__reload-button button">
-        Reload Preloaded Saves
-      </button>
     </div>
     <div class="settings">
       <div class="settings__icon">
