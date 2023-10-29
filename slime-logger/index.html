@@ -6,13 +6,42 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slime Logger</title>
-  <script type="module" crossorigin src="/slime-logger/assets/index-dd77b73b.js"></script>
+  <script type="module" crossorigin src="/slime-logger/assets/index-6e355eb9.js"></script>
 </head>
 
 <body>
   <button class="start-logging">Start Logging</button>
   <button class="insert-flag">Insert Rest Flag</button>
   <span class="log-number"></span>
+  <div class="mask-container">
+    <template id="maskTemplate">
+      <div class="mask">
+        <h3 class="name"></h3>
+        <div class="group">
+          <span>Accel</span>
+          <div class="check-group">
+            <input type="checkbox" name="x-accel" checked />
+            <span>X</span>
+            <input type="checkbox" name="y-accel" checked />
+            <span>Y</span>
+            <input type="checkbox" name="z-accel" checked />
+            <span>Z</span>
+          </div>
+        </div>
+        <div class="group">
+          <span>Rotation</span>
+          <div class="check-group">
+            <input type="checkbox" name="x-rot" checked />
+            <span>X</span>
+            <input type="checkbox" name="y-rot" checked />
+            <span>Y</span>
+            <input type="checkbox" name="z-rot" checked />
+            <span>Z</span>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
   
 </body>
 
