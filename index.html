@@ -1,220 +1,149 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="index.css">
-        <script src="index.js"></script>
-    </head>
-    <body>
-        <table id="tasks">
-            <tr> <!-- Bináris Lineáris kódok -->
-                <td>
-                    <b>Bináris Lineáris kódok</b>
-                </td>
-                <td>
-                    Adott egy generátormátrix:
-                    (<input id="binlinRows" /> sor x <input id="binlinCols" /> oszlop)<br>
-                    <button onclick="binlinCreate()">Generate!</button>
-                    <div id="binlinGenDiv" hidden>
-                        <br>
-                        <table class="matrix" id="binlinGen"></table>
-                        <button onclick="binlinCalculate()">Calculate!</button>
-                    </div>
-                    <div id="binlinResultDiv" hidden>
-                        <br>
-                        <table class="matrix result">
-                            <tr>
-                                <td>n:</td>
-                                <td><input id="binlinN" readonly /></td>
-                            </tr>
-                            <tr>
-                                <td>k:</td>
-                                <td><input id="binlinK" readonly /></td>
-                            </tr>
-                        </table>
-                        <br>
-                        Paritásellenörző mátrix:
-                        <table class="matrix result" id="binlinParMat"></table>
-                        <br>
-                        Kódszavak:
-                        <table class="result" id="binlinCodewords"></table>
-                    </div>
-                    <div id="binlinErrorVecDiv" hidden>
-                        <br>
-                        A hibavektor:<br>
-                        <input id="binlinErrorVec" /><br>
-                        <button onclick="binlinCalcEV()">Calculate!</button>
-                    </div>
-                    <div id="binlinEVResultDiv" hidden>
-                        <br>
-                        A szindrómavektor:<br>
-                        <input id="binlinSyndrome" readonly style="background-color: lightyellow" />
-                        <br>
-                        Hibavektorok a csoportban:
-                        <table class="result" id="binlinErrorGroup"></table>
-                        <br>
-                        Hibavektorok ebben a csoportban:
-                        <table id="binlinCWAnalyzed" class="matrix result" border="1px"></table>
-                    </div>
-                </td>
-            </tr>
-            <tr> <!-- Szisztematikus kód -->
-                <td>
-                    <b>Szisztematikus kód</b>
-                </td>
-                <td>
-                    Egy <input id="systematicErrorRate" /> bithibavalószínűségű rendszerben 
-                    adott egy bináris lineáris szisztematikus kód a következő kódszavakkal:<br>
-                    (<input id="systematicCount" /> darab)<br>
-                    <button onclick="systematicGen()">Generate!</button>
-                    <div id="systematicCW" hidden>
-                        <table id="systematicCodewords"></table>
-                        <button onclick="systematicCalculate()">Calculate!</button>
-                    </div>
-                    <div id="systematicMats" hidden>
-                        <br>
-                        Ekkor a generátormátrix:
-                        <table id="systematicGenMat" class="matrix result"></table>
-                        <br>
-                        És a paritásmátrix:
-                        <table id="systematicParMat" class="matrix result"></table>
-                        <br>
-                        Ha a hibavektor <input id="systematicEV" /><br>
-                        <button onclick="systematicCalcEV()">Calculate!</button><br>
-                        <br>
-                        Akkor ez a <input readonly style="background-color:lightyellow" id="systematicSV"/> szindrómavektor.<br>
-                        <br>
-                        Hibavektorok ebben a csoportban:
-                        <table id="systematicCWAnalyzed" class="matrix result" border="1px"></table>
-                    </div>
-                </td>
-            </tr>
-            <tr> <!-- Hamming kód -->
-                <td>
-                    <b>Hamming kód</b>
-                </td>
-                <td>
-                    Adott egy (<input id="hammingN" />, <input id="hammingK" />) paraméterű hamming kód.<br>
-                    <button onclick="hammingGenMats()">Generate!</button>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gorbit99 Sells Stuff</title>
 
-                    <div id="hammingMats" hidden>
-                        <br>
-                        <br>
-                        Ekkor a generátormátrix:
-                        <table class="matrix result" id="hammingGenMat"></table><br>
-                        <br>
-                        És a paritásellenörző mátrix:
-                        <table class="matrix result" id="hammingParMat"></table>
-                    </div>
-                </td>
-            </tr>
-            <tr> <!-- Reed-Solomon -->
-                <td>
-                    <b>Reed-Solomon</b>
-                </td>
-                <td>
-                    Egy Reed-Solomon kód GF(<input id="rsModulo" />) felett <input id="rsPrimitive" /> primitív elemmel,
-                    amely minden <input id="rsError" /> hibát javít. <br>
-                    <br>
-                    <button onclick="rsCalc()">Calculate</button><br>
-                    <div id="rsResults" hidden>
-                        <br>
-                        <table class="matrix result" readonly>
-                            <tr>
-                                <td>n:</td>
-                                <td><input id="rsN" />
-                            </tr>
-                            <tr>
-                                <td>k:</td>
-                                <td><input id="rsK" />
-                            </tr>
-                        </table>
-                        <br>
-                        Generátor mátrix:<br>
-                        <table class="matrix result" id="rsGenMat"></table></br>
-                        <br>
-                        Paritásellenörző mátrix:<br>
-                        <table class="matrix result" id="rsParMat"></table></br>
-                        <br>
-                        <table class="matrix"><tr id="rsInput"></tr></table> bemenet hatására a 
-                        <table class="matrix result"><tr id="rsOutput"></tr></table> kódolást kapjuk.<br>
-                        <button onclick="rsCalcOutput()">Calculate</button>
-                    </div>
-                </td>
-            </tr>
-            <tr> <!-- Reed-Solomon Paritásból -->
-                <td>
-                    <b>Reed-Solomon paritásból</b>
-                </td>
-                <td>
-                    Adott a GF(<input id="revRSModulo" />) felett egy Reed-Solomon kód paritásellenörző mátrixa:<br>
-                    (<input id="revRSRows" /> sor x <input id="revRSCols" /> oszlop) <br>
-                    <button onclick="revRSGen()">Generate</button>
-                    <br>
-                    <br>
-                    <div id="revRSResults" hidden>
-                        <table id="revRSParMat" class="matrix"></table>
-                        <button onclick="revRSCalcGen()">Calculate</button><br>
-                        <br>
-                        Ekkor a generátormátrix:<br>
-                        <table id="revRSGenMat" class="matrix result"></table>
-                        <br>
-                    </div>
-                    <div id="revRSDecoded" hidden>
-                        Ha detekciós algoritmus után a 
-                        <table class="matrix"><tr id="revRSCodevector"></tr></table>
-                        kódvektort detektáljuk, akkor a detektált üzenetvektor:
-                        <table class="matrix result"><tr id="revRSMessage"></tr></table>
-                        <button onclick="revRSDecode()">Decode</button>
-                    </div>
-                </td>
-            </tr>
+    <style>
+      :root {
+        --color-background-500: #221d23;
+        --color-background-400: #2f2a30;
+        --color-background-300: #3c373d;
+        --color-text: #f5f5f5;
+        --color-primary: #d1603d;
+      }
 
-            <tr> <!-- Lz78 encode-->
-                <td>
-                    <b>Lz78 encode</b>
-                </td>
-                <td>
-                    Adott bináris bemenet(<input id="lz78Input" type="text" />) <br>
-                    <button onclick="lz78encode()">Generate</button>
-                    <br>
-                    <br>
-                    <div id="lz78Results" hidden>
-                        <p id="lz78out" class="matrix"></p>
-                    </div>
-                </td>
-            </tr>
-            <tr> <!-- Ciklikus kódok -->
-                <td>
-                    <b>Ciklikus kódok</b>
-                </td>
-                <td>
-                    Adott egy ciklikus RS kód GF(<input id="cyclicMod" />) felett, ami minden <input id="cyclicErrors" /> hibát javít.
-                    A primitív <input id="cyclicPrimitive" />.<br>
-                    <button onclick="cyclicGenerate()">Generate!</button>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-                    <div id="cyclicResults" hidden>
-                        <br>
-                        <table class="matrix result" readonly>
-                            <tr>
-                                <td>n:</td>
-                                <td><input id="cyclicN" />
-                            </tr>
-                            <tr>
-                                <td>k:</td>
-                                <td><input id="cyclicK" />
-                            </tr>
-                        </table>
-                        <br>
-                        Generátor polinóm:<br>
-                        <input id="cyclicGen" readonly style="background-color:lightyellow" />
-                        Paritásellenörző polinóm:<br>
-                        <input id="cyclicPar" readonly style="background-color:lightyellow" />
-                        Kódpolinómot előállító shiftregiszter együtthatói:<br>
-                        <input id="cyclicCodeShift" readonly style="background-color:lightyellow" />
-                        Üzenetpolinómot előállító shiftregiszter együtthatói:<br>
-                        <input id="cyclicMessage" readonly style="background-color:lightyellow" />
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </body>
+      body {
+        background-color: var(--color-background-500);
+        color: var(--color-text);
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        display: flex;
+        gap: 3rem;
+        flex-direction: column;
+        width: calc(min(80%, 60rem));
+        margin: 0 auto;
+        padding-top: 1rem;
+        background-color: var(--color-background-400);
+        flex: 1;
+      }
+
+      .title {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        background-color: var(--color-background-400);
+        margin-bottom: 1rem;
+
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .introduction {
+        width: 80%;
+        margin: 0 auto;
+        padding: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .reviews {
+        background-color: var(--color-background-400);
+        padding: 2rem 5rem;
+
+        border-radius: 0.5rem;
+        border: 1px solid black;
+        margin: 1rem 1rem;
+      }
+
+      .reviews__review-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .reviews h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .reviews__review {
+        background-color: var(--color-background-300);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        flex: 1;
+
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .reviews__review p::before,
+      .reviews__review p::after {
+        content: '"';
+      }
+
+      .contacts {
+        background-color: var(--color-background-400);
+        padding: 1rem;
+
+        margin: 1rem 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid black;
+      }
+
+      .contacts h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .contacts span {
+        display: inline;
+        background-color: var(--color-background-300);
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 class="title">Gorbit99 Sells Stuff</h1>
+
+    <main>
+      <p class="introduction">
+        Hi there! I'm Gorbit, maybe I can sell you stuff. Curious if I sell
+        something? Maybe I do, ask!
+      </p>
+
+      <div class="reviews">
+        <h2>Customer Reviews</h2>
+        <div class="reviews__review-container">
+          <div class="reviews__review">
+            <p>Great service! I bought a thing and it was great!</p>
+          </div>
+          <div class="reviews__review">
+            <p>He did certainly sell me stuff!</p>
+          </div>
+          <div class="reviews__review">
+            <p>10/10 would buy stuff again!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contacts">
+        <h2>Contacts</h2>
+        <p>
+          Write me on Discord, my username is
+          <span>gorbit99</span>. We can talk about selling you stuff!
+        </p>
+      </div>
+    </main>
+  </body>
 </html>

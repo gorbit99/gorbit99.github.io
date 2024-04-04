@@ -1,0 +1,220 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <table id="tasks">
+            <tr> <!-- Bináris Lineáris kódok -->
+                <td>
+                    <b>Bináris Lineáris kódok</b>
+                </td>
+                <td>
+                    Adott egy generátormátrix:
+                    (<input id="binlinRows" /> sor x <input id="binlinCols" /> oszlop)<br>
+                    <button onclick="binlinCreate()">Generate!</button>
+                    <div id="binlinGenDiv" hidden>
+                        <br>
+                        <table class="matrix" id="binlinGen"></table>
+                        <button onclick="binlinCalculate()">Calculate!</button>
+                    </div>
+                    <div id="binlinResultDiv" hidden>
+                        <br>
+                        <table class="matrix result">
+                            <tr>
+                                <td>n:</td>
+                                <td><input id="binlinN" readonly /></td>
+                            </tr>
+                            <tr>
+                                <td>k:</td>
+                                <td><input id="binlinK" readonly /></td>
+                            </tr>
+                        </table>
+                        <br>
+                        Paritásellenörző mátrix:
+                        <table class="matrix result" id="binlinParMat"></table>
+                        <br>
+                        Kódszavak:
+                        <table class="result" id="binlinCodewords"></table>
+                    </div>
+                    <div id="binlinErrorVecDiv" hidden>
+                        <br>
+                        A hibavektor:<br>
+                        <input id="binlinErrorVec" /><br>
+                        <button onclick="binlinCalcEV()">Calculate!</button>
+                    </div>
+                    <div id="binlinEVResultDiv" hidden>
+                        <br>
+                        A szindrómavektor:<br>
+                        <input id="binlinSyndrome" readonly style="background-color: lightyellow" />
+                        <br>
+                        Hibavektorok a csoportban:
+                        <table class="result" id="binlinErrorGroup"></table>
+                        <br>
+                        Hibavektorok ebben a csoportban:
+                        <table id="binlinCWAnalyzed" class="matrix result" border="1px"></table>
+                    </div>
+                </td>
+            </tr>
+            <tr> <!-- Szisztematikus kód -->
+                <td>
+                    <b>Szisztematikus kód</b>
+                </td>
+                <td>
+                    Egy <input id="systematicErrorRate" /> bithibavalószínűségű rendszerben 
+                    adott egy bináris lineáris szisztematikus kód a következő kódszavakkal:<br>
+                    (<input id="systematicCount" /> darab)<br>
+                    <button onclick="systematicGen()">Generate!</button>
+                    <div id="systematicCW" hidden>
+                        <table id="systematicCodewords"></table>
+                        <button onclick="systematicCalculate()">Calculate!</button>
+                    </div>
+                    <div id="systematicMats" hidden>
+                        <br>
+                        Ekkor a generátormátrix:
+                        <table id="systematicGenMat" class="matrix result"></table>
+                        <br>
+                        És a paritásmátrix:
+                        <table id="systematicParMat" class="matrix result"></table>
+                        <br>
+                        Ha a hibavektor <input id="systematicEV" /><br>
+                        <button onclick="systematicCalcEV()">Calculate!</button><br>
+                        <br>
+                        Akkor ez a <input readonly style="background-color:lightyellow" id="systematicSV"/> szindrómavektor.<br>
+                        <br>
+                        Hibavektorok ebben a csoportban:
+                        <table id="systematicCWAnalyzed" class="matrix result" border="1px"></table>
+                    </div>
+                </td>
+            </tr>
+            <tr> <!-- Hamming kód -->
+                <td>
+                    <b>Hamming kód</b>
+                </td>
+                <td>
+                    Adott egy (<input id="hammingN" />, <input id="hammingK" />) paraméterű hamming kód.<br>
+                    <button onclick="hammingGenMats()">Generate!</button>
+
+                    <div id="hammingMats" hidden>
+                        <br>
+                        <br>
+                        Ekkor a generátormátrix:
+                        <table class="matrix result" id="hammingGenMat"></table><br>
+                        <br>
+                        És a paritásellenörző mátrix:
+                        <table class="matrix result" id="hammingParMat"></table>
+                    </div>
+                </td>
+            </tr>
+            <tr> <!-- Reed-Solomon -->
+                <td>
+                    <b>Reed-Solomon</b>
+                </td>
+                <td>
+                    Egy Reed-Solomon kód GF(<input id="rsModulo" />) felett <input id="rsPrimitive" /> primitív elemmel,
+                    amely minden <input id="rsError" /> hibát javít. <br>
+                    <br>
+                    <button onclick="rsCalc()">Calculate</button><br>
+                    <div id="rsResults" hidden>
+                        <br>
+                        <table class="matrix result" readonly>
+                            <tr>
+                                <td>n:</td>
+                                <td><input id="rsN" />
+                            </tr>
+                            <tr>
+                                <td>k:</td>
+                                <td><input id="rsK" />
+                            </tr>
+                        </table>
+                        <br>
+                        Generátor mátrix:<br>
+                        <table class="matrix result" id="rsGenMat"></table></br>
+                        <br>
+                        Paritásellenörző mátrix:<br>
+                        <table class="matrix result" id="rsParMat"></table></br>
+                        <br>
+                        <table class="matrix"><tr id="rsInput"></tr></table> bemenet hatására a 
+                        <table class="matrix result"><tr id="rsOutput"></tr></table> kódolást kapjuk.<br>
+                        <button onclick="rsCalcOutput()">Calculate</button>
+                    </div>
+                </td>
+            </tr>
+            <tr> <!-- Reed-Solomon Paritásból -->
+                <td>
+                    <b>Reed-Solomon paritásból</b>
+                </td>
+                <td>
+                    Adott a GF(<input id="revRSModulo" />) felett egy Reed-Solomon kód paritásellenörző mátrixa:<br>
+                    (<input id="revRSRows" /> sor x <input id="revRSCols" /> oszlop) <br>
+                    <button onclick="revRSGen()">Generate</button>
+                    <br>
+                    <br>
+                    <div id="revRSResults" hidden>
+                        <table id="revRSParMat" class="matrix"></table>
+                        <button onclick="revRSCalcGen()">Calculate</button><br>
+                        <br>
+                        Ekkor a generátormátrix:<br>
+                        <table id="revRSGenMat" class="matrix result"></table>
+                        <br>
+                    </div>
+                    <div id="revRSDecoded" hidden>
+                        Ha detekciós algoritmus után a 
+                        <table class="matrix"><tr id="revRSCodevector"></tr></table>
+                        kódvektort detektáljuk, akkor a detektált üzenetvektor:
+                        <table class="matrix result"><tr id="revRSMessage"></tr></table>
+                        <button onclick="revRSDecode()">Decode</button>
+                    </div>
+                </td>
+            </tr>
+
+            <tr> <!-- Lz78 encode-->
+                <td>
+                    <b>Lz78 encode</b>
+                </td>
+                <td>
+                    Adott bináris bemenet(<input id="lz78Input" type="text" />) <br>
+                    <button onclick="lz78encode()">Generate</button>
+                    <br>
+                    <br>
+                    <div id="lz78Results" hidden>
+                        <p id="lz78out" class="matrix"></p>
+                    </div>
+                </td>
+            </tr>
+            <tr> <!-- Ciklikus kódok -->
+                <td>
+                    <b>Ciklikus kódok</b>
+                </td>
+                <td>
+                    Adott egy ciklikus RS kód GF(<input id="cyclicMod" />) felett, ami minden <input id="cyclicErrors" /> hibát javít.
+                    A primitív <input id="cyclicPrimitive" />.<br>
+                    <button onclick="cyclicGenerate()">Generate!</button>
+
+                    <div id="cyclicResults" hidden>
+                        <br>
+                        <table class="matrix result" readonly>
+                            <tr>
+                                <td>n:</td>
+                                <td><input id="cyclicN" />
+                            </tr>
+                            <tr>
+                                <td>k:</td>
+                                <td><input id="cyclicK" />
+                            </tr>
+                        </table>
+                        <br>
+                        Generátor polinóm:<br>
+                        <input id="cyclicGen" readonly style="background-color:lightyellow" />
+                        Paritásellenörző polinóm:<br>
+                        <input id="cyclicPar" readonly style="background-color:lightyellow" />
+                        Kódpolinómot előállító shiftregiszter együtthatói:<br>
+                        <input id="cyclicCodeShift" readonly style="background-color:lightyellow" />
+                        Üzenetpolinómot előállító shiftregiszter együtthatói:<br>
+                        <input id="cyclicMessage" readonly style="background-color:lightyellow" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
