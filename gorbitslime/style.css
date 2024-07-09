@@ -1,16 +1,31 @@
 :root {
   font-size: 16px;
+
+  --color-background-300: hsla(228, 66%, 0%, 1);
+  --color-background-500: hsla(228, 50%, 3%, 1);
+  --color-background-800: hsla(228, 30%, 8%, 1);
+
+  --color-text: hsla(0, 0%, 100%, 1);
+  --color-border: hsla(228, 50%, 20%, 1);
 }
 
 * {
   line-height: 1.5;
+  color: var(--color-text);
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  background: var(--color-background-300);
 }
 
 main {
-  width: calc(min(80%, 100ch));
+  width: calc(min(80%, 110ch));
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 1rem;
   margin-bottom: 3rem;
+  background: var(--color-background-500);
+  padding: 2rem;
 }
 
 .hero {
@@ -20,6 +35,14 @@ main {
   gap: 3rem;
   margin-bottom: 5rem;
   justify-content: center;
+  background: var(--color-background-800);
+  padding: 3em;
+  border-radius: 0.5rem;
+}
+
+.hero__image {
+  border-radius: 0.5rem;
+  width: 500px;
 }
 
 .hero__text {
@@ -35,9 +58,10 @@ main {
 .section {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   padding: 2rem;
   border-radius: 0.5rem;
+  background: var(--color-background-800);
+  box-shadow: 0px 0px 5px 0px hsla(0, 0%, 0%, 0.5);
 }
 
 .section__text-block {
@@ -46,7 +70,7 @@ main {
 
 .section__title {
   text-align: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--color-border);
   margin-bottom: 1rem;
 }
 
@@ -67,18 +91,20 @@ main {
   flex-direction: row;
   justify-content: center;
   gap: 2rem;
-  width: 80%;
+  width: 90%;
 }
 
 .three-split__panel {
-  border: 1px solid black;
+  border: 1px solid var(--color-border);
   flex: 1 1 33%;
   padding: 1rem;
   min-height: 30rem;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 5px 0px hsla(0, 0%, 0%, 0.5);
 }
 
 .three-split__title-block {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   gap: 1rem;
