@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VQF Sim</title>
+  <script type="module" crossorigin src="assets/index-D9_XcfDn.js"></script>
+  <link rel="stylesheet" crossorigin href="assets/index-Bol3jrak.css">
+</head>
+
+<body>
+  <main>
+    <div class="vqf-params">
+      <h1 class="vqf-params__label">Params</h1>
+      <div class="input__wrapper input__wrapper--number">
+        <label for="sampleRate" class="input__label">Sampling Rate</label>
+        <input id="sampleRate" name="sampleRate" value="120" />
+      </div>
+      <div class="input__wrapper input__wrapper--number">
+        <label for="gyrHz" class="input__label">Gyro Rate</label>
+        <input id="gyrHz" name="gyrHz" value="400" />
+      </div>
+      <div class="input__wrapper input__wrapper--number">
+        <label for="accHz" class="input__label">Accel Rate</label>
+        <input id="accHz" name="accHz" value="100" />
+      </div>
+      <div class="input__wrapper input__wrapper--boolean">
+        <label for="useMag" class="input__label">Use Mag</label>
+        <input id="useMag" name="useMag" type="checkbox" />
+      </div>
+      <div class="input__wrapper input__wrapper--number mag-hz-wrapper hidden">
+        <label for="magHz" class="input__label">Mag Rate</label>
+        <input id="magHz" name="magHz" value="400" />
+      </div>
+    </div>
+    <div class="calculation">
+      <h1 class="calculation__label">Calculations</h1>
+      <div class="file-input__wrapper">
+        <label for="fileInput">Raw IMU output:</label>
+        <input type="file" class="file-input" id="fileInput" />
+      </div>
+      <button class="result-download hidden">Download Result</button>
+    </div>
+  </main>
+</body>
+
+</html>
