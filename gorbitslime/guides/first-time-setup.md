@@ -35,7 +35,7 @@ short while and the tracker will start working immediately.
 
 If the tracker is **on**, pressing the button for about a second will turn it **off**. This is indicated by 3 quick blinks on the indicator.
 
-[[Video here]]
+https://github.com/user-attachments/assets/e6082d41-ca44-4930-9cce-e2e3498f3f4d
 
 ## Indicator Light
 
@@ -78,7 +78,7 @@ The tracker takes approximately **4 hours** to charge from completely drained. I
 
 ## Setting Up the Chest Strap
 
-[[Video here]]
+https://github.com/user-attachments/assets/28e59d7d-4b60-4ad3-9c25-c105e1d8e967
 
 The chest strap is the large GoPro harness you received. Find the pre-attached mount piece on it.
 
@@ -109,11 +109,13 @@ You can tighten the straps by grabbing the upper layer of straps where they are 
 ![Adjusting the top straps](./images/tighten-top-strap.png)
 ![Adjusting the bottom strap](./images/tighten-bottom-strap.png)
 
-[[Video here]]
+https://github.com/user-attachments/assets/bd367dad-7c99-4cef-a1ff-687350a1749a
+
+https://github.com/user-attachments/assets/c01e246d-2609-4c3c-879a-817094713046
 
 ## Setting Up the Rest of the Straps
 
-[[Video here]]
+https://github.com/user-attachments/assets/07e8e810-c3b8-4cbc-8530-3395681fb34e
 
 To put together the rest of the straps, you'll need the silicone mounts. Go grab them!
 
@@ -140,7 +142,7 @@ Afterwards push the end through the other loop on the mount. At this point the s
 
 ## Putting the Straps On
 
-[[Video here]]
+https://github.com/user-attachments/assets/97f8a619-fdf4-49cc-a022-d2ce9ca80db3
 
 Now you'll need to figure out which strap goes on what part of your body.
 - The longest straps you have will be for your **hips** and (optional) **waist**. These are 40 inches or 100cm long.
@@ -167,7 +169,7 @@ If you ever need to adjust the size of the strap, just undo the velcro and adjus
 
 ## Taking the Straps Off
 
-[[Video Here]]  
+https://github.com/user-attachments/assets/32586ad8-89a1-48c7-a6d3-8eb607660668
 
 To take the straps with the magnetic clasps off, first grab the clasp on both sides:
 
@@ -183,7 +185,7 @@ have the velcro end free, which could get stuck on fabric things and other strap
 
 ## Putting the Trackers on the Straps
 
-[[Video here]]
+https://github.com/user-attachments/assets/1507fafe-bbbf-44d5-9867-106d32205b5d
 
 To put the tracker on the strap, just push it in place! **Make sure the flat side of the tracker is the one facing outside after that**. The other side has a
 globe shaped indent on it, you should **not** see that while it's in the strap.
