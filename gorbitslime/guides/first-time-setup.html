@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="generator" content="md2html">
+    <meta charset="UTF-8">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    :root {
+      font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 20px;
+    }
+
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+
+    html {
+    background: #000;
+    color: white;
+    }
+
+    body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    main {
+    max-width: 120ch;
+    background: #111;
+    padding-inline: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    }
+
+    img {
+    display: block;
+    width: 80%;
+    margin: auto;
+      padding: 0.5rem;
+      border-radius: 1rem;
+    }
+
+    video {
+    display: block;
+    width: 80%;
+    margin: auto;
+      padding: 0.5rem;
+    }
+
+    p {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    }
+
+    li {
+    margin-left: 2rem;
+    }
+
+    ul {
+    padding-bottom: 1rem;
+    }
+
+    h1, h2, h3 {
+    padding-bottom: 0.5rem;
+      padding-top: 1rem;
+    }
+
+      h1 {
+      background: #222;
+    padding: 1rem;
+      border-radius: 1rem;
+      margin-inline: -2rem;
+      }
+
+    div {
+    padding-bottom: 1rem;
+    }
+
+    .important-block {
+      background: #313;
+      padding: 1rem;
+    padding-top: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+      margin-bottom: 1rem;
+
+      &::before {
+    content: "Important!";
+    display: block;
+    padding: 0.5rem;
+    background: #414;
+    margin-inline: -1rem;
+    margin-bottom: 0.5rem;
+      font-weight: bold;
+      }
+    }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>What's in the box</h1>
+      <p>With your order you get the following things:</p>
+      <ul>
+        <li>The trackers themselves</li>
+        <li>A chest harness for the chest tracker</li>
+        <li>Elastic straps for the rest of the trackers (in total one fewer than you have trackers)</li>
+        <li>Silicone tracker mounts (one per tracker bought)</li>
+        </ul>
+        <blockquote>
+          <div class="important-block">
+    You get a spare tracker mount. This is in case you lose one or the dog chews one to pieces or otherwise something makes one of your other mounts unusable.
+    Put this away in a safe location, where you can find it in an emergency.</div>
+          </blockquote>
+          <h3>Straps</h3>
+          <p>Usually you get the following straps with your order:</p>
+          <ul>
+            <li>Chest: A harness that you can recognize by it being big and bulky and different looking</li>
+            <li>Hip: A long (100cm or 40”) strap</li>
+            <li>Thighs: Medium length (60cm or 24”) straps</li>
+            <li>Ankles: Short (40cm or 16”) straps</li>
+            <li>Elbows: Short (40cm or 16”) straps</li>
+            <li>Feet: Extra short (30cm or 12”) straps</li>
+            </ul>
+            <p>Depending on your exact build and preferences, you might want to swap around where each strap goes.</p>
+            <h1>The Interface</h1>
+            <h2>On-Off Button</h2>
+            <p>The trackers have a button on them that you can use to turn them on and off.</p>
+            <p><img src="./images/button.png" alt="The button on the tracker"></p>
+            <p>If the tracker is <strong>off</strong>, pressing the button will turn it <strong>on</strong>. This will light up the indicator for a
+            short while and the tracker will start working immediately.</p>
+            <p>If the tracker is <strong>on</strong>, pressing the button for about a second will turn it <strong>off</strong>. This is indicated by 3 quick blinks on the indicator.</p>
+            <video controls src="https://github.com/user-attachments/assets/e6082d41-ca44-4930-9cce-e2e3498f3f4d"></video>
+            <h2>Indicator Light</h2>
+            <p>The indicator light can be found right next to the button.</p>
+            <p><img src="./images/indicator-light.png" alt="The indicator light on the tracker"></p>
+            <p>It has 3 possible colours:</p>
+            <ul>
+              <li>🔵 Blue: Generic indicator<ul>
+                  <li>It turns on for about a second when turning the tracker on.</li>
+                  <li>It blinks 3 times in quick succession when the tracker is turned off.</li>
+                  <li>Very short blinks approximately every half a second means the tracker is looking for the server.</li>
+                  <li>Quick blinks while the tracker is functional about twice a second (e.g. tracking, connected to the server, etc.) generally means the battery is getting low.</li>
+                  <li><strong>If the light stays on constantly</strong>, that means the battery is so dead, that the tracker can't function, charge it!</li>
+                  </ul>
+              </li>
+              <li>🔴 Red: Charging<ul>
+                  <li>It's <strong>normal</strong> for the red light to come on for about a minute when plugging the tracker in, even after you just charged it to full.</li>
+                  </ul>
+              </li>
+              <li>🟢 Green: Charged</li>
+              </ul>
+              <blockquote>
+                <div class="important-block">
+            The lights can be on at the same time, which will cause them to mix. This is especially common when you are charging the trackers or
+            you have them plugged into a PC and turn them on.
+                </div>
+              </blockquote>
+              <h2>Charging Port</h2>
+              <p>The tracker has a USB Type-C charging port on the back.</p>
+              <p><img src="./images/charging-port.png" alt="The charging port on the tracker"></p>
+              <p>This takes any normal USB-C charger. The charger needs to be able to deliver at least 0.5A of current
+                  (most chargers manufactured in the last 15 years will be able to achieve this, but if you want to err on the safe side, this info should be
+                  listed on your charging block).</p>
+              <p>If you are using a hub of sorts, make sure each individual port can supply this while they are all in use
+              (note: standard 7 port usb hubs that only connect to your PC generally <strong>CAN NOT</strong> do this!). Do not worry about your charger supplying
+                  more than 0.5A of current, it won’t hurt the tracker, but also won’t speed up charging.</p>
+              <p>The tracker takes approximately <strong>4 hours</strong> to charge from completely drained. Ideally do not let this happen, charge regularly.</p>
+              <h1>Strapping Up</h1>
+              <h2>Setting Up the Chest Strap</h2>
+              <video controls src="https://github.com/user-attachments/assets/28e59d7d-4b60-4ad3-9c25-c105e1d8e967"></video>
+              <p>The chest strap is the large GoPro harness you received. Find the pre-attached mount piece on it.</p>
+              <p><img src="./images/chest-holder-piece.png" alt="The mount piece on the chest strap"></p>
+              <p>To attach a tracker, just push it in with the flat side of the tracker facing outwards.
+            The globe shaped indent on the back of the tracker should not be visible.</p>
+              <p><img src="./images/tracker-on-chest-strap.png" alt="The chest tracker attached to the chest mount"></p>
+              <p>To detach the tracker, for charging or just storage, just press down on the two tabs at the sides of the holder piece.</p>
+              <p><img src="./images/detach-chest-tracker.png" alt="Detaching the chest tracker"></p>
+              <blockquote>
+                <div class="important-block">
+              It does not matter what direction you put the tracker into the holder piece.</div>
+                </blockquote>
+                <blockquote>
+                  <div class="important-block">
+              Do not try to move the holder piece or rotate it, the correct orientation is exactly as it came in your package.
+              <strong>Doing otherwise will be considered user error in case of a failure</strong>.</div>
+              </blockquote>
+              <p>The thinner straps on the chest strap are supposed to go on either side of your neck. The large strap should wrap around your body below your armpits.</p>
+              <p><img src="./images/chest-strap-worn.png" alt="Correct way to wear the chest strap"></p>
+              <p>You can tighten the straps by grabbing the upper layer of straps where they are doubled up, grabbing the plastic tightener on it, then pulling away.</p>
+              <p><img src="./images/tighten-top-strap.png" alt="Adjusting the top straps">
+              <img src="./images/tighten-bottom-strap.png" alt="Adjusting the bottom strap"></p>
+              <video controls src="https://github.com/user-attachments/assets/bd367dad-7c99-4cef-a1ff-687350a1749a"></video>
+              <video controls src="https://github.com/user-attachments/assets/c01e246d-2609-4c3c-879a-817094713046"></video>
+              <h2>Setting Up the Rest of the Straps</h2>
+              <video controls src="https://github.com/user-attachments/assets/07e8e810-c3b8-4cbc-8530-3395681fb34e"></video>
+              <p>To put together the rest of the straps, you'll need the silicone mounts. Go grab them!</p>
+              <p><img src="./images/strap-and-holder.jpg" alt="The strap and the silicone mount"></p>
+              <p>The straps have 2 ends, a velcro end, with the white globe pattern on it, and a clasp or ring end.</p>
+              <p>They also have 2 sides, a grippy side, which is meant to be against your body, and a fluffy side that makes up the other part of the velcro assembly.</p>
+              <p>First undo the velcro end...</p>
+              <p><img src="./images/undo-velcro.jpg" alt="The velcro end undone"></p>
+              <p>...then push it through one of the loops on the mount. Make sure the <strong>grippy side</strong> is facing <strong>away</strong> from the mount.</p>
+              <p><img src="./images/through-one-loop.jpg" alt="The strap through one strap loop"></p>
+              <p>Afterwards push the end through the other loop on the mount. At this point the strap should go into one strap loop, under the tracker, then up the other loop.</p>
+              <p><img src="./images/through-both-loops.jpg" alt="The mount on the strap"></p>
+              <p><img src="./images/strap-orientation-correct.png" alt="The strap on the mount correctly">
+              <img src="./images/strap-orientation-wrong.png" alt="The strap on the mount incorrectly"></p>
+              <h2>Putting the Straps On</h2>
+              <video controls src="https://github.com/user-attachments/assets/97f8a619-fdf4-49cc-a022-d2ce9ca80db3"></video>
+              <p>Now you'll need to figure out which strap goes on what part of your body.</p>
+              <ul>
+                <li>The longest straps you have will be for your <strong>hips</strong> and (optional) <strong>waist</strong>. These are 40 inches or 100cm long.</li>
+                <li>The ones just below that in length are for your <strong>thighs</strong>. These are 24 inches or 60cm in length.</li>
+                <li>The shortest ones you have that still have magnetic clasps on them are for your <strong>ankles</strong> and <strong>upper arms</strong>. These are 16 inches or 40cm long.</li>
+                <li>The very shortest ones are for your feet. These also have a small plastic loop instead of a magnetic clasp. These are 12 inches or 30cm in length.</li>
+                </ul>
+                <p>Loop the strap around the body part it belongs on, then push the velcro end through the loop on the other side. On straps with the magnetic clasps this will be
+              the clasp itself, on the foot straps this will be the small plastic loop.</p>
+                <p><img src="./images/before-velcro.jpg" alt="The velcro pushed through the loop on the clasp"></p>
+                <p>Tighten the strap so it's comfortable, then push the velcro end against the body of the strap.</p>
+                <p><img src="./images/after-velcro.jpg" alt="The strap completely fitted"></p>
+                <blockquote>
+                  <div class="important-block">
+              The straps <strong>don't need to be super tight</strong>. They are grippy for a reason, make sure they are comfortable to wear and don't leave marks.</div>
+                  </blockquote>
+                  <blockquote>
+                    <div class="important-block">
+              Ideally wear the straps directly on your skin. This actually lets the non-slip side work as intended.</div>
+                    </blockquote>
+                    <p>If you ever need to adjust the size of the strap, just undo the velcro and adjust it to the correct size.</p>
+                    <h2>Taking the Straps Off</h2>
+                    <video controls src="https://github.com/user-attachments/assets/32586ad8-89a1-48c7-a6d3-8eb607660668"></video>
+                    <p>To take the straps with the magnetic clasps off, first grab the clasp on both sides:</p>
+                    <p><img src="./images/before-detach.jpg" alt="Grabbing onto the clasp to detach it"></p>
+                    <p>To separate the sides, you want to basically break them apart. This can be done with a rotating motion away from your body. It can take a bit of force to do
+                this, this makes sure your straps stay secure while you wear them.</p>
+                    <p><img src="./images/after-detach.jpg" alt="Detached clasp"></p>
+                    <p>For the foot straps, no such mechanism exists. Those you should just slide off your feet without undoing the velcro. This makes sure that A) you don't
+                have the velcro end free, which could get stuck on fabric things and other straps and B) you don't need to readjust the straps every time you play.</p>
+                    <h2>Putting the Trackers on the Straps</h2>
+                    <video controls src="https://github.com/user-attachments/assets/1507fafe-bbbf-44d5-9867-106d32205b5d"></video>
+                    <p>To put the tracker on the strap, just push it in place! <strong>Make sure the flat side of the tracker is the one facing outside after that</strong>. The other side has a
+                    globe shaped indent on it, you should <strong>not</strong> see that while it's in the strap.</p>
+                    <p><img src="./images/tracker-orientation-correct.png" alt="The tracker in the mount correctly">
+                    <img src="./images/tracker-orientation-wrong.png" alt="The tracker in the mount incorrectly"></p>
+                    <p>It doesn't matter what way they face inside the mounts, though <strong>I recommend having the button face
+                      to one side</strong> just so you don't accidentally press it in the mount.</p>
+                    <h1>Connecting the Trackers</h1>
+                    <p>There are no special instructions, just install the SlimeVR Server Software from https://slimevr.dev/download,
+                    and follow the initial setup guide there. If you get stuck, check <a href="https://docs.slimevr.dev/quick-setup.html">the quick setup guide</a>.</p>
+                    <h1>Washing the Straps</h1>
+                    <p>If you feel like your straps need washing, that probably means that you should wash them.
+                    I personally just use a regular washing machine using the synthetic material setting. You can wash them alongside other clothing articles.
+                    The straps come unwashed, and considering that they are shipped internationally, you might want to wash them before use.</p>
+                    </main>
+  </body>
+</html>
