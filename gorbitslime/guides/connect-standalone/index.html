@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link href="../common-style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <h1>Connecting SlimeVR to Standalone VRChat</h1>
+      <br>
+      <div class="important-block">
+          This guide is not necessary if <strong>you installed the SlimeVR app directly to your headset</strong>, only if you instead have it on a separate computer or Android phone.</div>
+      <p>This guide assumes that you have already done all the previous steps when it comes to setting up your trackers, namely:</p>
+      <ul>
+        <li>You unboxed your trackers and checked that you have everything you should.</li>
+        <li>You fitted your straps to yourself.</li>
+        <li>You installed the SlimeVR server software on your phone or computer.</li>
+        <li>You connected your trackers to the SlimeVR server through Wi-Fi.</li>
+        </ul>
+        <h3>Step 1: Getting your Quest's IP</h3>
+        <p>You need to tell SlimeVR where on your Wi-Fi network to look for your Quest headset. For this you need its IP address.</p>
+        <p>Put on your Quest and open up the <strong>settings app</strong>.</p>
+
+        <p>From the available menu options, pick "Wi-Fi".</p>
+        <img src="./images/settings-go-to-wifi.png" alt="Navigate to the Wi-Fi menu" />
+
+        <p>Find the group labelled "My networks", under it you should find the Wi-Fi network your Quest is connected to. Generally speaking this should be at the very top of the list and should have "Connected" written right under it. Go ahead and click on this item to navigate to your Wi-Fi properties. In this example this is "MyAwesomeWiFi"</p>
+
+        <img src="./images/settings-click-wifi.png" alt="Select your Wi-Fi from the list" />
+
+        <p>In the following menu, you should see a bunch of information listed about your Wi-Fi. Scroll down until you find the one labelled "IP address". The string of numbers and periods under it is your Quest's IP address. I recommend writing this down for the next steps, but of course you can also just remember it. In this example this will be "192.168.1.111".</p>
+
+        <blockquote><div class="important-block">Below the option for "IP address" are "Gateway" and "Subnet mask". These have the same pattern of digits and periods as the IP, but <strong>they are not the same and are not necessary</strong>. Make sure you don't accidentally write these down instead of the IP address.</div></blockquote>
+
+        <img src="./images/settings-check-ip.png" alt="Find your Quest's IP in the list" />
+
+        <h3>Step 2: SlimeVR Settings</h3>
+
+        <p>Now that you have your Quest's IP address, go back to the SlimeVR server. We need to make some changes to the settings for it to work.</p>
+
+        <p>First, head on over to the settings menu within SlimeVR. On the left side within the list of settings pages, find "VRChat OSC Trackers". This should be under the heading "OSC".</p>
+
+        <blockquote><div class="important-block">Be careful, the pages titled "OSC router" and "VMC" look very similar to the "VRChat OSC Trackers" one, but they are for entirely different purposes. If you mess with those settings, you might need to undo them later, or your tracking might not work.</div></blockquote>
+
+        <img src="./images/slimevr-osc-tracker-settings.png" alt="Navigate to the VRChat OSC Trackers settings page" />
+
+        <p>First, at the very top, enable VRChat OSC Trackers. This tells SlimeVR to stream your tracking data to VRChat through OSC.</p>
+
+        <img src="./images/slimevr-turn-on-osc-trackers.png" alt="Turn on VRChat OSC Trackers" />
+
+        <p>Afterwards, make sure that "Enable OSCQuery" is also turned on. This allows SlimeVR to fetch your headset and controller information for better tracking.</p>
+
+        <img src="./images/slimevr-turn-on-oscquery.png" alt="Turn on OSCQuery" />
+
+        <p>Now it's time to grab the IP address you've written down. By default the text field labelled "Network address" should have the value "127.0.0.1". Replace this with your Quest's IP address.</p>
+
+        <blockquote><div class="important-block">Right above the option you just changed are a pair of fields called "Port In" and "Port Out". Unless you know exactly what you are doing and why, <strong>you should not change these</strong>. If you already did, they should be set to "9001" for "Port In", and "9000" for "Port Out".</div></blockquote>
+
+        <img src="./images/slimevr-edit-network-address.png" alt="Edit the network address" />
+
+        <p>The last step is to configure the tracking points that will be sent to the Quest. There are 2 possibilities here:</p>
+
+        <p>Option 1: You <strong>don't have arm trackers</strong>. In this case turn on Chest, Hip, Knees, and Feet, and make sure Elbows are turned off.</p>
+
+        <img src="./images/slimevr-osc-trackers-without-arms.png" alt="Chosen trackers without elbow tracking" />
+
+        <p>Option 2: You <strong>do have arm trackers</strong>. In this case turn on all of the tracking points.</p>
+
+        <img src="./images/slimevr-osc-trackers-with-arms.png" alt="Chosen trackers with elbow tracking" />
+
+        <blockquote><div class="important-block">These options aren't referring to what trackers you have, but what joints or body parts should be tracked in VRChat. Even if you don't have feet trackers for example, enabling the feet tracking points is necessary.</div></blockquote>
+
+        <h3>Step 3: VRChat</h3>
+        
+        <p>Time to put on your trackers and launch VRChat. If you did everything right, when you open your quick menu, the "Sit/Stand" option should be replaced with "Calibrate".</p>
+
+        <img src="./images/calibrate.webp" alt="The calibration button appearing in VRChat" />
+
+        <p>You can of course click it, calibrate and be off, but you should first make sure that <a href="https://docs.slimevr.dev/tools/vrchat-config.html#vrchat-configuration">VRChat settings are set correctly</a></p>
+
+        <h3>Troubleshooting</h3>
+
+        <a id="cant-wifi" href="#cant-wifi"><h4>I can't access my Wi-Fi settings inside the Quest</h4></a>
+        <p>If parental protection is turned on for your headset, your parent or guardian might have disabled your access to the Wi-Fi page. Ask them for access.</p>
+
+        <hr><br>
+
+        <a id="everything-not-correct" href="#everything-not-correct"><h4>I did everything correctly, but the "Calibrate" button isn't appearing</h4></a>
+        <p>That means you did not, in fact, do everything correctly. The main things to check are:</p>
+        <ul>
+          <li>Did you write down and enter your headset's IP correctly? Are you sure?</li>
+          <li>Did you turn on VRChat OSC trackers?</li>
+          <li>Did you mess with the ports listed in the SlimeVR settings by accident?</li>
+        </ul>
+
+        <hr><br>
+
+        <a id="suddenly-borked" href="#suddenly-borked"><h4>Everything worked before, but all of a sudden it broke</h4></a>
+        <p>Check your headset's IP again. Your devices can sometimes get different IP addresses assigned to them if they are turned off for an extended period or the router restarts. If this is the case, you can avoid this in the future by assigning a static IP address to your headset, provided you can mess with your router's settings.</p>
+
+        </main>
+  </body>
+</html>

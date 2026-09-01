@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #000;
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  max-width: 120ch;
+  background: #111;
+  padding-inline: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+img {
+  display: block;
+  width: 80%;
+  margin: auto;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+video {
+  display: block;
+  width: 80%;
+  margin: auto;
+  padding: 0.5rem;
+}
+
+p {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+}
+
+li {
+  margin-left: 2rem;
+}
+
+ul {
+  padding-bottom: 1rem;
+}
+
+h1,
+h2,
+h3 {
+  padding-bottom: 0.5rem;
+  padding-top: 1rem;
+}
+
+h1 {
+  background: #222;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-inline: -2rem;
+}
+
+div {
+  padding-bottom: 1rem;
+}
+
+.important-block {
+  background: #313;
+  padding: 1rem;
+  padding-top: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  &::before {
+    content: "Important!";
+    display: block;
+    padding: 0.5rem;
+    background: #414;
+    margin-inline: -1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+}
+
+a {
+  color: #aaf;
+}
+
+a[id] {
+  color: white;
+  text-decoration: none;
+}
