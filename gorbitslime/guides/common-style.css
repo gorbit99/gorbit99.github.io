@@ -27,7 +27,7 @@ body {
 }
 
 main {
-  max-width: 120ch;
+  width: calc(min(120ch, 100%));
   background: #111;
   padding-inline: 3rem;
   padding-top: 2rem;
