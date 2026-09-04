@@ -163,4 +163,8 @@ code:not(pre > code) {
   h2 {
     font-size: 1.25rem;
   }
+
+  img {
+    width: 100%;
+  }
 }
