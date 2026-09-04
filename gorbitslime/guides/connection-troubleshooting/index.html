@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="generator" content="md2html">
+    <meta charset="UTF-8">
+    <link href="../common-style.css" rel="stylesheet" />
+    <script src="../auto-linkify.js" defer></script>
+  </head>
+  <body>
+    <main>
+    <h1>Troubleshooting Connection Issues</h1>
+    <p>This guide is here in case you are having trouble getting (or keeping) your trackers connected to the SlimeVR Server app. This guide <strong>does not</strong> cover causes and solutions for high ping, choppy tracking or any other tracking issues that come up after you've already successfully connected your trackers.</p>
+    <p>Before you can try any given solution, it's important that you first determine what the actual symptoms are. This document will guide you through a couple common situations and their possible fixes.</p>
+    <p>This guide will assume that you are on the &quot;Connect trackers&quot; screen inside the SlimeVR app.</p>
+    <h1>Before you do anything</h1>
+    <p>It's worth trying some dumb solutions to see if those fix your issues. Restart your PC and your router. You'd be surprised how many issues this solves.</p>
+    <p><strong>If you have a router from Spectrum, Netgear or Eero</strong>, you might want to just skip this entire document and go straight to <a href="https://docs.slimevr.dev/server/alternate-wifi.html">alternative Wi-Fi options</a>. These routers are known to commonly have issues with slimes, without a whole lot of options to fix it.</p>
+    <h1>Checking the serial console for logs</h1>
+    <p>Many of these issues need you to check the serial console for diagnosing the cause. For that, click the &quot;I'm having trouble connecting!&quot; button at the top.</p>
+    <p><img src="./images/having-trouble-connecting.png" alt="The &quot;I'm having trouble connecting!&quot; button"></p>
+    <p>This should bring you to the serial console screen.</p>
+    <div class="side-by-side">
+      <div class="title">PC view</div>
+      <div class="title">Mobile view</div>
+      <img class="content" src="./images/pc-serial-console.png" alt="PC serial console">
+      <img class="content" src="./images/mobile-serial-console.png" alt="Mobile serial console">
+    </div>
+    <p>If you connect a tracker to your device, several controls should appear at the bottom and some text should appear in the above box.</p>
+    <p><img src="./images/serial-console-controls.png" alt="Serial console controls"></p>
+    <p>These are what each of them do:</p>
+    <ul>
+      <li><strong>Reboot</strong>: restarts the tracker without you having to touch it.</li>
+      <li><strong>Factory Reset</strong>: wipes all calibration and configuration data from the tracker, including Wi-Fi details. <strong>Does not reset the firmware of the tracker</strong>.</li>
+      <li><strong>Get WIFI Scan</strong>: shows you the available Wi-Fi networks around the tracker.</li>
+      <li><strong>Save To File</strong>: saves the text into a handy log file, useful for asking others for help (though a screenshot is usually simpler to view for most).</li>
+      <li><strong>Pause button to the right</strong>: pauses the scrolling of the console window for easier reading.</li>
+      <li><strong>&quot;Command...&quot; input and &quot;Send&quot; button</strong>: allows you to send custom commands.</li>
+      <li><strong>Dropdown (or dropup?) at the bottom</strong>: if you have multiple trackers connected, let's you pick which one you want to mess with.</li>
+      </ul>
+      <p>Most of the diagnosing happens by just reading the text dump that the tracker gives you. <strong>Before anything, click &quot;Reboot&quot;</strong>. This shows the information from the very beginning, which is necessary.</p>
+      <h2>&quot;No trackers detected&quot;</h2>
+      <p><img src="./images/no-trackers-detected.png" alt="No trackers detected screen"></p>
+      <p>Symptoms:</p>
+      <ul>
+        <li>The app doesn't seem to pick up the tracker you plugged in.</li>
+        <li>The bar below &quot;Looking for trackers&quot; never moves.</li>
+        <li>A pop-up saying &quot;No trackers detected&quot; appears.</li>
+        </ul>
+        <p>This means that your PC is not seeing the tracker you've plugged in for whatever reason.</p>
+        <p>Things to try:</p>
+        <ul>
+          <li>Make sure you <strong>plug the tracker into your PC</strong>.<ul>
+              <li>It's not enough to plug the tracker into a charger.</li>
+              <li>The USB cable on both ends should be fully in place, this might require a bit of force. If you do it correctly, you should hear a faint click.</li>
+              </ul>
+          </li>
+          <li>Make sure your tracker is <strong>turned on</strong>.<ul>
+              <li>Usually when the tracker is on, the light on it will blink from time to time.</li>
+              </ul>
+          </li>
+          <li>Make sure you are <strong>using a proper, data capable USB cable</strong>.<ul>
+              <li>If you are on Windows, you should hear the classic USB notification sound when you plug the tracker in.</li>
+              <li>If the cable splits into multiple ends, don't use it, get a different one.</li>
+              </ul>
+          </li>
+          <li>Try different cables, different USB ports on your computer.<ul>
+              <li>Some cables might just be faulty, or the port might have some odd behaviour.</li>
+              </ul>
+          </li>
+        </ul>
+        <p>Some more esoteric possibilities:</p>
+        <ul>
+          <li>Have you messed with the firmware on the tracker? You might have made an error there.</li>
+          <li>Does the tracker not turn on even when it's powered on? It might be faulty.</li>
+    </ul>
+    <h2>&quot;Obtaining the tracker mac address&quot; stuck in a loop</h2>
+    <p><img src="./images/obtaining-mac-address-loop.png" alt="&quot;Obtaining mac address&quot; loop"></p>
+    <p>This is a very rare issue.</p>
+    <p>Symptoms:</p>
+    <ul>
+      <li>&quot;Obtaining the tracker mac address&quot; status appears, then immediately disappears, potentially in a loop.</li>
+      <li>Serial console shows no response to &quot;REBOOT&quot; or spams garbled or repeating messages.</li>
+      </ul>
+      <p>Things to try:</p>
+      <ul>
+        <li>Usually this means that there is no firmware on the tracker, or that it's broken. If you tried updating the tracker, you might have made a mistake somewhere. Try again to recover it.</li>
+        </ul>
+        <h2>&quot;Could not get logs from the tracker&quot;</h2>
+        <p><img src="./images/could-not-get-logs.png" alt="&quot;Could not get logs from the tracker&quot; error"></p>
+        <p>This is a very rare issue.</p>
+        <p>Symptoms:</p>
+        <ul>
+          <li>&quot;Could not get logs from the tracker&quot; error appears.</li>
+          </ul>
+          <p>When the server tries to communicate with the tracker, it does that by sending text to the tracker, and receiving replies. This error usually means that while the tracker was seemingly recognized, the communication is not possible for whatever reason.</p>
+          <p>Things to try:</p>
+          <ul>
+            <li>Check if you have any other device plugged into your PC that SlimeVR might be confused by. Common culprits are custom keyboards or PiShock devices.</li>
+            <li>Try restarting your computer. Something might be running that is forcefully taking over the USB ports.</li>
+            <li>Sometimes it might help to manually enter Wi-Fi details through the serial console. See the details in the <a href="#manually-entering-wi-fi-details">relevant section</a>.</li>
+          </ul>
+          <h2>&quot;Unable to connect to Wi-Fi&quot;</h2>
+          <p><img src="./images/unable-to-connect-to-wifi.png" alt="The &quot;Unable to connect to Wi-Fi&quot; error"></p>
+          <p>This is probably the most common issue on this list.</p>
+          <p>Symptoms:</p>
+          <ul>
+            <li>The tracker is detected properly</li>
+            <li>After showing &quot;Trying to connect to connect to Wi-Fi&quot; for a while, it errors and says &quot;Unable to connect to Wi-Fi&quot;</li>
+            <li>The issue happens on every tracker</li>
+            </ul>
+            <p>It's best to check the serial console to further find out the cause of this issue. Look for a pair of lines that say</p>
+            <pre><code>Loaded credentials for SSID '...' and pass length ...</code></pre>
+            <p>and</p>
+            <pre><code>Can't connect from saved credentials, error: ..., reason: ...</code></pre>
+            <p><img src="./images/seeing-actual-connection-error.png" alt="The two relevant log lines"></p>
+            <p>Check what the given reason is. The options are:</p>
+            <h3>Wrong password</h3>
+            <p>Check that you entered your password correctly (you probably didn't). Did you accidentally include a space or any other character? Did you mix up some characters by accident? If you try to connect from your phone with that password, does it work?</p>
+            <h3>SSID not found</h3>
+            <p>Your tracker cannot see the Wi-Fi network you are trying to connect it to. This usually means that you are trying to connect to a Wi-Fi that isn't supported by slimes, or that you typo'd the name.</p>
+            <p>Head on over to the <a href="#checking-what-wi-fi-networks-your-slime-sees">section about checking your available Wi-Fi networks</a>.</p>
+            <h3>Timeout</h3>
+            <p>Sadly this error isn't particularly helpful, and usually it boils down to your router not liking you very much. Try an <a href="https://docs.slimevr.dev/server/alternate-wifi.html">alternative Wi-Fi option</a> or purchase one of the many recommended (and fairly priced) routers from that same page.</p>
+            <h2>One or multiple trackers don't connect, others do</h2>
+            <p>Symptoms:</p>
+            <ul>
+              <li>Most of your trackers, or at least some connected just fine.</li>
+              <li>One or multiple trackers refuse to connect.</li>
+              </ul>
+              <p>Some routers have inherent limitations on how many devices they can handle. Infamously the Puppis S1 &quot;dedicated VR router&quot; can only handle up to 8 by default. This is also the case for the Windows Mobile Hotspot solution detailed in the <a href="https://docs.slimevr.dev/server/alternate-wifi.html">alternative Wi-Fi options guide</a>. If you have more than 8 trackers, you will need to find a different option or get a different router (possibly even just for the trackers).</p>
+              <h2>Could not find the server</h2>
+              <p>Symptoms:</p>
+              <ul>
+                <li>The trackers connect to Wi-Fi just fine.</li>
+                <li>They fail with an error saying &quot;Could not find the server&quot;.</li>
+                </ul>
+                <p>This usually means that, while the tracker can connect to Wi-Fi, it cannot locate the SlimeVR Server app (the one right in front of you) on that network. This can also boil down to several possibilities.</p>
+                <h3>You are connected to some kind of shared or public Wi-Fi</h3>
+                <p>Commonly public Wi-Fi (like in hotels), dorm Wi-Fi, Wi-Fi shared with others, or any other similar network will be closed off so that you don't see the other people on it for security reasons. This is of course not great when that's required for SlimeVR, you need to look into <a href="https://docs.slimevr.dev/server/alternate-wifi.html">alternative Wi-Fi options</a>.</p>
+                <h3>You are using a mesh network or access points</h3>
+                <p>The section on <a href="#checking-what-wi-fi-networks-your-slime-sees">checking available Wi-Fi networks</a> goes into this in detail and how you can determine if this is the case.</p>
+                <h3>Your network is set as &quot;public&quot; within Windows</h3>
+                <p>This instructs Windows to hide your PC on the network as much as possible. This shouldn't be the case if it's your own private Wi-Fi network.</p>
+                <p>To fix this:</p>
+                <ol>
+                  <li>Open the Windows Start Menu.</li>
+                  <li>Search for &quot;Settings&quot; and open it.</li>
+                  <li>Look for &quot;Network &amp; internet&quot;, click it.</li>
+                  <li>If you are using an Ethernet (wired) connection, pick that, if you are on Wi-Fi, pick that on the right side.</li>
+                  <li>Make sure out of the two options (public and private), <strong>private</strong> is selected.</li>
+                  <li>If it wasn't, restart SlimeVR.</li>
+                  </ol>
+                  <p>If it was set to private, this isn't the droid you are looking for.</p>
+                  <h3>Your firewall is too aggressive</h3>
+                  <p>If you are on Windows, try the following:</p>
+                  <ol>
+                    <li>Press the Windows key + R (at the same time), a small dialogue box should appear.</li>
+                    <li>Type or paste in <code>C:/Program Files (x86)/SlimeVR Server</code>, and hit &quot;Ok&quot; or press &quot;Enter&quot;. A file explorer should now open with the SlimeVR folder in it.</li>
+                    <li>Find the file called &quot;firewall.bat&quot;. Right click and pick &quot;Run as administrator&quot;.</li>
+                    <li>If a prompt shows up asking you to confirm, do that.</li>
+                    <li>A black window should appear and promptly disappear, this should have fixed the issue.</li>
+                    <li>Restart SlimeVR.</li>
+                    </ol>
+                    <p>If you are on Mac, see if you are running something like PortMaster or similar. Try turning them off.</p>
+                    <p>If you are on Linux, Google is your friend here. Also check the <a href="https://docs.slimevr.dev/tools/linux-installation.html#firewall-rules">relevant documentation</a>.</p>
+                    <h1>Checking what Wi-Fi networks your slime sees</h1>
+                    <p>To see a list of Wi-Fi networks your slime sees, go back to the serial console and hit &quot;Get WIFI Scan&quot;. (If it happens to fail, just try again until you see something resembling the image below).</p>
+                    <p><img src="./images/get-wifi-scan.png" alt="Wi-Fi scan result"></p>
+                    <p>This might seem overwhelming at first, but it's actually very simple. Each line is a separate Wi-Fi network that your slime can see. Check if what you've tried to enter is in there. If not, see if you recognize a similar one. For example, if you entered &quot;MyAwesomeWiFi&quot; and that didn't work, but you see that there is one named &quot;MyAwesomeWiFi 2.4&quot;, that might be the one you want!</p>
+                    <p>Another thing to pay attention to is the exact name of the Wi-Fi. Check if there are any rogue spaces in there (everything between the '' marks is part of the name). Make sure you include that too if there is.</p>
+                    <blockquote>
+      <div class="important-block">
+                Wi-Fi names are <strong>case sensitive</strong>. This means that typing &quot;myawesomewifi&quot; instead of &quot;MyAwesomeWiFi&quot; will not work. Make sure you typed every single uppercase letter as uppercase and vica versa.</div>
+                      </blockquote>
+                      <p>If your Wi-Fi name appears multiple times on the list, you likely have access points set up or a mesh network. It's technically possible to get those working, but nothing is guaranteed, you might be better off trying an <a href="https://docs.slimevr.dev/server/alternate-wifi.html">alternative Wi-Fi option</a>.</p>
+                      <h1>Manually entering Wi-Fi details</h1>
+                      <p>If all else fails, you can circumvent the &quot;Connect trackers&quot; screen and do the dirty work yourself. First, head over to the serial console, and make sure your tracker communicates just fine with the server (by clicking &quot;Reboot&quot;).</p>
+                      <p>At the bottom you should see an input field with &quot;<em>Command...</em>&quot; inside it.</p>
+                      <p><img src="./images/command-input.png" alt="The command input field"></p>
+                      <p>Enter the following:</p>
+                      <pre><code>SET WIFI &quot;MyWiFiName&quot; &quot;MyWiFiPassword&quot;</code></pre>
+                      <p>Change <code>MyWiFiName</code> and <code>MyWiFiPassword</code> to your Wi-Fi credentials. <strong>Keep the quotation marks (these: &quot;)</strong>.</p>
+                      <p>Click &quot;Send&quot;. A warning box should appear.</p>
+                      <p><img src="./images/command-warning-box.png" alt="Warning box"></p>
+                      <p>Click &quot;I know what I'm doing&quot;. Everything here is safe and won't affect your trackers negatively.</p>
+                      <p>A line saying &quot;New wifi credentials set, reconnecting&quot; should now appear. If you've done everything correctly, the tracker should now connect to the Wi-Fi, which will be indicated with a line &quot;Connected successfully to SSID '...', IP address ...&quot;.</p>
+                      </main>
+                      </body>
+</html>

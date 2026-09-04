@@ -108,3 +108,37 @@ a[id] {
   color: white;
   text-decoration: none;
 }
+
+div.side-by-side {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 0;
+  border: 1px solid white;
+  border-radius: 1rem;
+  padding: 0.5rem;
+
+  & > .title {
+    grid-row: 1;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  & > .content {
+    grid-row: 2;
+    width: 100%;
+    vertical-align: top;
+  }
+}
+
+pre:has(> code) {
+  background: #000011;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  user-select: all;
+}
+
+code:not(pre > code) {
+  background: #000011;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
