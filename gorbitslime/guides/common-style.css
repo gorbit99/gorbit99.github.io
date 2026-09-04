@@ -6,7 +6,7 @@
   font-weight: normal;
   font-style: normal;
   font-variation-settings: "wdth" 100;
-  font-size: 20px;
+  font-size: clamp(15px, 4vw, 20px);
 }
 
 * {
@@ -139,10 +139,28 @@ pre:has(> code) {
   border-radius: 0.5rem;
   padding: 1rem;
   user-select: all;
+  max-width: 100%;
+  text-wrap-mode: wrap;
 }
 
 code:not(pre > code) {
   background: #000011;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-inline: 1.5rem;
+  }
+
+  h1 {
+    margin-inline: -1rem;
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
 }
