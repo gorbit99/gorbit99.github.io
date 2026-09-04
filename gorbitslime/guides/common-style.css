@@ -22,8 +22,11 @@ html {
 
 body {
   display: flex;
-  flex-direction: column;
+  display: -webkit-flex;
   align-items: center;
+  -webkit-align-items: center;
+  flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 main {
