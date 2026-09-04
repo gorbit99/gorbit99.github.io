@@ -59,7 +59,8 @@ li {
   margin-left: 2rem;
 }
 
-ul {
+ul,
+ol {
   padding-bottom: 1rem;
 }
 
